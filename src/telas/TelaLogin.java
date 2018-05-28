@@ -18,6 +18,7 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     public TelaLogin() {
         initComponents();
+        botaoEntrar.requestFocus();
     }
 
     /**
@@ -37,8 +38,29 @@ public class TelaLogin extends javax.swing.JFrame {
         setTitle("Login");
 
         campoSenha.setText("jPasswordField1");
+        campoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoSenhaFocusLost(evt);
+            }
+        });
+        campoSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campoSenhaActionPerformed(evt);
+            }
+        });
 
         campoUsuario.setText("Usuário");
+        campoUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoUsuarioFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoUsuarioFocusLost(evt);
+            }
+        });
         campoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUsuarioActionPerformed(evt);
@@ -88,9 +110,41 @@ public class TelaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_campoUsuarioActionPerformed
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        Login.autenticaUsuario(campoUsuario, campoSenha);
+        //Login.autenticaUsuario(campoUsuario, campoSenha);
+        campoSenha.requestFocus();
         
     }//GEN-LAST:event_botaoEntrarActionPerformed
+
+    private void campoUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoUsuarioFocusGained
+        campoUsuario.setText("");
+    }//GEN-LAST:event_campoUsuarioFocusGained
+
+    private void campoUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoUsuarioFocusLost
+        if(campoUsuario.getText().trim().equals("")){
+            campoUsuario.setText("Usuário");
+        }
+            
+    }//GEN-LAST:event_campoUsuarioFocusLost
+
+    private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_campoSenhaActionPerformed
+
+    private void campoSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusGained
+        campoSenha.setText("");
+    }//GEN-LAST:event_campoSenhaFocusGained
+
+    private void campoSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoSenhaFocusLost
+        String s =  campoSenha.getPassword().toString();
+        System.out.println(s);
+        if(campoSenha.getPassword().toString().equals("")){
+            System.out.println("ENTROU NESA MERDA?");
+            String senha = "password";
+            campoSenha.setText(senha);
+        }
+    }//GEN-LAST:event_campoSenhaFocusLost
 
     /**
      * @param args the command line arguments

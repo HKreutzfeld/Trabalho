@@ -6,6 +6,7 @@
 package trabalho;
 
 import telas.TelaFuncionario;
+import telas.TelaLogin;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Trabalho {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        TelaFuncionario tela = new TelaFuncionario();
+        TelaLogin tela = new TelaLogin();
         tela.setVisible(true);
     }
     
