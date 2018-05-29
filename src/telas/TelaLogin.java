@@ -6,6 +6,7 @@
 package telas;
 
 import controles.Login;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,11 +34,12 @@ public class TelaLogin extends javax.swing.JFrame {
         campoSenha = new javax.swing.JPasswordField();
         campoUsuario = new javax.swing.JTextField();
         botaoEntrar = new javax.swing.JButton();
+        TituloUsuario = new javax.swing.JLabel();
+        TtuloSenha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
 
-        campoSenha.setText("jPasswordField1");
         campoSenha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoSenhaFocusGained(evt);
@@ -52,7 +54,6 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
-        campoUsuario.setText("Usuário");
         campoUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 campoUsuarioFocusGained(evt);
@@ -67,12 +68,17 @@ public class TelaLogin extends javax.swing.JFrame {
             }
         });
 
+        botaoEntrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botaoEntrar.setText("Entrar");
         botaoEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoEntrarActionPerformed(evt);
             }
         });
+
+        TituloUsuario.setText("Usuario");
+
+        TtuloSenha.setText("Senha");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,36 +88,57 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TituloUsuario)
+                            .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TtuloSenha)
+                            .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addComponent(botaoEntrar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(botaoEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TituloUsuario)
+                    .addComponent(TtuloSenha))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(botaoEntrar)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addComponent(botaoEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUsuarioActionPerformed
-        // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_campoUsuarioActionPerformed
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        //Login.autenticaUsuario(campoUsuario, campoSenha);
-        campoSenha.requestFocus();
+        if(Login.autenticaUsuario(campoUsuario, campoSenha).equals("ERRO")){
+            JOptionPane.showMessageDialog(null, "Usuário ou senha em branco.");
+        }else if(Login.autenticaUsuario(campoUsuario, campoSenha).equals("GERENTE")){
+            this.dispose();
+            TelaGerente tela = new TelaGerente();
+            tela.setVisible(true);
+        }else if(Login.autenticaUsuario(campoUsuario, campoSenha).equals("FUNCIONARIO")){
+            this.dispose();
+            TelaFuncionario tela = new TelaFuncionario();
+            tela.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos.");
+        }
+        
         
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
@@ -140,7 +167,6 @@ public class TelaLogin extends javax.swing.JFrame {
         String s =  campoSenha.getPassword().toString();
         System.out.println(s);
         if(campoSenha.getPassword().toString().equals("")){
-            System.out.println("ENTROU NESA MERDA?");
             String senha = "password";
             campoSenha.setText(senha);
         }
@@ -183,6 +209,8 @@ public class TelaLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel TituloUsuario;
+    private javax.swing.JLabel TtuloSenha;
     private javax.swing.JButton botaoEntrar;
     private javax.swing.JPasswordField campoSenha;
     private javax.swing.JTextField campoUsuario;

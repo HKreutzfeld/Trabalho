@@ -5,8 +5,11 @@
  */
 package controles;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import objetos.Funcionario;
+import objetos.Listas;
 
 /**
  *
@@ -14,10 +17,19 @@ import javax.swing.JTextField;
  */
 public class Login {
     
-    public static void autenticaUsuario(JTextField usuario, JPasswordField senha){
-        
-        
-        
+    public static String autenticaUsuario(JTextField usuario, JPasswordField senha){
+        if(usuario.getText().equals("") || new String(senha.getPassword()).trim().equals("")){
+            return "ERRO";
+        }else if(usuario.getText().equals("joao") && new String(senha.getPassword()).trim().equals("gasolina")){
+            System.out.println("entrou");
+            return "GERENTE";
+        }else{
+            for(Funcionario f : Listas.equipe){
+                if(f.getLoginFuncionario().equals(usuario.getText()) && f.getSenhaFuncionario().equals(new String(senha.getPassword()).trim())){
+                   return "FUNCIONARIO";
+                }
+            }
+        }
+        return "";
     }
-	
 }
