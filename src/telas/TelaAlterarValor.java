@@ -5,6 +5,11 @@
  */
 package telas;
 
+import controles.DefinePrecoCombustivel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author 104935
@@ -16,6 +21,7 @@ public class TelaAlterarValor extends javax.swing.JFrame {
      */
     public TelaAlterarValor() {
         initComponents();
+        DefinePrecoCombustivel.carregaPrecos((DefaultTableModel) TabelaValores.getModel());
     }
 
     /**
@@ -30,7 +36,7 @@ public class TelaAlterarValor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TbelaValores = new javax.swing.JTable();
+        TabelaValores = new javax.swing.JTable();
         BotaoAlterarValor = new javax.swing.JButton();
         BotaoMenu = new javax.swing.JButton();
 
@@ -41,11 +47,11 @@ public class TelaAlterarValor extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("ALTERAR VALORES");
 
-        TbelaValores.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaValores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {"Gasolina", null, null},
-                {"Etanol", null, null},
-                {"Diesel", null, null}
+                {"Gasolina", "", null},
+                {"Etanol", "", null},
+                {"Diesel", "", null}
             },
             new String [] {
                 "Combustível", "Preço atual", "Novo preço"
@@ -59,7 +65,7 @@ public class TelaAlterarValor extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TbelaValores);
+        jScrollPane1.setViewportView(TabelaValores);
 
         BotaoAlterarValor.setText("Alterar");
         BotaoAlterarValor.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +75,11 @@ public class TelaAlterarValor extends javax.swing.JFrame {
         });
 
         BotaoMenu.setText("Voltar");
+        BotaoMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,8 +118,21 @@ public class TelaAlterarValor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotaoAlterarValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAlterarValorActionPerformed
-        // TODO add your handling code here:
+        TabelaValores.getSelectionModel().clearSelection();
+        
+        String v1 = "" + TabelaValores.getValueAt(0, 2);
+        String v2 = "" + TabelaValores.getValueAt(1, 2);
+        String v3 = "" + TabelaValores.getValueAt(2, 2);
+        DefinePrecoCombustivel.alteraPrecos(Double.parseDouble(v1), Double.parseDouble(v2), Double.parseDouble(v3));
+        DefinePrecoCombustivel.carregaPrecos((DefaultTableModel) TabelaValores.getModel());
+        
     }//GEN-LAST:event_BotaoAlterarValorActionPerformed
+
+    private void BotaoMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoMenuActionPerformed
+        this.dispose();
+        TelaGerente tela = new TelaGerente();
+        tela.setVisible(true);
+    }//GEN-LAST:event_BotaoMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,7 +172,7 @@ public class TelaAlterarValor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoAlterarValor;
     private javax.swing.JButton BotaoMenu;
-    private javax.swing.JTable TbelaValores;
+    private javax.swing.JTable TabelaValores;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

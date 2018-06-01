@@ -5,6 +5,8 @@
  */
 package telas;
 
+import controles.CadastrarFuncionarios;
+
 /**
  *
  * @author 104935
@@ -32,9 +34,9 @@ public class TelaCadastrarFuncionario extends javax.swing.JFrame {
         TituloLogin = new javax.swing.JLabel();
         CampoLogin = new javax.swing.JTextField();
         TituloSenha = new javax.swing.JLabel();
-        CampoSenha = new javax.swing.JTextField();
         BotaoCadastrar = new javax.swing.JButton();
         botaoVoltar = new javax.swing.JButton();
+        CampoSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,14 +55,13 @@ public class TelaCadastrarFuncionario extends javax.swing.JFrame {
         TituloSenha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TituloSenha.setText("Senha");
 
-        CampoSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoSenhaActionPerformed(evt);
-            }
-        });
-
         BotaoCadastrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         BotaoCadastrar.setText("Cadastrar");
+        BotaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoCadastrarActionPerformed(evt);
+            }
+        });
 
         botaoVoltar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         botaoVoltar.setText("Voltar");
@@ -85,9 +86,9 @@ public class TelaCadastrarFuncionario extends javax.swing.JFrame {
                             .addComponent(TituloSenha))
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CampoNome)
+                            .addComponent(CampoNome, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)
                             .addComponent(CampoLogin)
-                            .addComponent(CampoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 205, Short.MAX_VALUE)))
+                            .addComponent(CampoSenha)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(BotaoCadastrar)
@@ -124,13 +125,18 @@ public class TelaCadastrarFuncionario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoLoginActionPerformed
 
-    private void CampoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CampoSenhaActionPerformed
-
     private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        TelaGerente tela = new TelaGerente();
+        tela.setVisible(true);
     }//GEN-LAST:event_botaoVoltarActionPerformed
+
+    private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
+        CadastrarFuncionarios.cadastraFuncionario(CampoNome, CampoLogin, CampoSenha);
+        CampoLogin.setText("");
+        CampoNome.setText("");
+        CampoSenha.setText("");
+    }//GEN-LAST:event_BotaoCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,7 +177,7 @@ public class TelaCadastrarFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton BotaoCadastrar;
     private javax.swing.JTextField CampoLogin;
     private javax.swing.JTextField CampoNome;
-    private javax.swing.JTextField CampoSenha;
+    private javax.swing.JPasswordField CampoSenha;
     private javax.swing.JLabel TituloLogin;
     private javax.swing.JLabel TituloNome;
     private javax.swing.JLabel TituloSenha;

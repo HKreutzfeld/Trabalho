@@ -21,7 +21,6 @@ public class Login {
         if(usuario.getText().equals("") || new String(senha.getPassword()).trim().equals("")){
             return "ERRO";
         }else if(usuario.getText().equals("joao") && new String(senha.getPassword()).trim().equals("gasolina")){
-            System.out.println("entrou");
             return "GERENTE";
         }else{
             for(Funcionario f : Listas.equipe){

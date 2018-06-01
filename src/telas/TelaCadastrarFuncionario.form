@@ -36,9 +36,9 @@
                       </Group>
                       <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="CampoNome" max="32767" attributes="0"/>
+                          <Component id="CampoNome" pref="205" max="32767" attributes="0"/>
                           <Component id="CampoLogin" max="32767" attributes="0"/>
-                          <Component id="CampoSenha" pref="205" max="32767" attributes="0"/>
+                          <Component id="CampoSenha" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -112,11 +112,6 @@
         <Property name="text" type="java.lang.String" value="Senha"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="CampoSenha">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CampoSenhaActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="BotaoCadastrar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -124,6 +119,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotaoCadastrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="botaoVoltar">
       <Properties>
@@ -135,6 +133,8 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoVoltarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="CampoSenha">
     </Component>
   </SubComponents>
 </Form>
