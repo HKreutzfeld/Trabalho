@@ -20,12 +20,16 @@ public class TelaGerente extends javax.swing.JFrame {
         BotaoHistorico = new javax.swing.JButton();
         BotaoAlterarValores = new javax.swing.JButton();
         botaoCadastrarFuncionario = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BotaoaDemitir = new javax.swing.JButton();
         BotaoVoltar = new javax.swing.JToggleButton();
+        labelBoss = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Gerente");
+        setResizable(false);
 
         BotaoHistorico.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotaoHistorico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/money.png"))); // NOI18N
         BotaoHistorico.setText("Histórico");
         BotaoHistorico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -34,7 +38,8 @@ public class TelaGerente extends javax.swing.JFrame {
         });
 
         BotaoAlterarValores.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        BotaoAlterarValores.setText("Alterar valores");
+        BotaoAlterarValores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/arrows.png"))); // NOI18N
+        BotaoAlterarValores.setText(" Alterar valores");
         BotaoAlterarValores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoAlterarValoresActionPerformed(evt);
@@ -42,6 +47,7 @@ public class TelaGerente extends javax.swing.JFrame {
         });
 
         botaoCadastrarFuncionario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoCadastrarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/user-add.png"))); // NOI18N
         botaoCadastrarFuncionario.setText("Cadastrar funcionario");
         botaoCadastrarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -49,15 +55,17 @@ public class TelaGerente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Demitir funcionario");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotaoaDemitir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotaoaDemitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
+        BotaoaDemitir.setText("Demitir funcionario");
+        BotaoaDemitir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotaoaDemitirActionPerformed(evt);
             }
         });
 
         BotaoVoltar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         BotaoVoltar.setText("Voltar");
         BotaoVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,35 +73,45 @@ public class TelaGerente extends javax.swing.JFrame {
             }
         });
 
+        labelBoss.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        labelBoss.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Boss.png"))); // NOI18N
+        labelBoss.setText("Tela do Gerente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotaoVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(BotaoHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotaoAlterarValores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botaoCadastrarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BotaoVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotaoaDemitir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotaoHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BotaoAlterarValores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botaoCadastrarFuncionario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(labelBoss)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addContainerGap()
+                .addComponent(labelBoss)
+                .addGap(18, 18, 18)
                 .addComponent(BotaoHistorico, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BotaoAlterarValores, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(botaoCadastrarFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BotaoaDemitir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BotaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -105,9 +123,12 @@ public class TelaGerente extends javax.swing.JFrame {
         tela.setVisible(true);
     }//GEN-LAST:event_botaoCadastrarFuncionarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotaoaDemitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoaDemitirActionPerformed
         
-        String nome = "";
+        this.dispose();
+        TelaDemitirFuncionario tela = new TelaDemitirFuncionario();
+        tela.setVisible(true);
+       String nome = "";
         for(Funcionario f : Listas.equipe){
             if(f.getNome().equals(nome)){
                 Listas.equipe.remove(f);
@@ -115,7 +136,7 @@ public class TelaGerente extends javax.swing.JFrame {
             }
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotaoaDemitirActionPerformed
 
     private void BotaoHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoHistoricoActionPerformed
     if(Listas.historicoVendas.isEmpty()){
@@ -145,7 +166,8 @@ public class TelaGerente extends javax.swing.JFrame {
     private javax.swing.JButton BotaoAlterarValores;
     private javax.swing.JButton BotaoHistorico;
     private javax.swing.JToggleButton BotaoVoltar;
+    private javax.swing.JButton BotaoaDemitir;
     private javax.swing.JButton botaoCadastrarFuncionario;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel labelBoss;
     // End of variables declaration//GEN-END:variables
 }

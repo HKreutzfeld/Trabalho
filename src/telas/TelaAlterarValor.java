@@ -22,6 +22,7 @@ public class TelaAlterarValor extends javax.swing.JFrame {
     public TelaAlterarValor() {
         initComponents();
         DefinePrecoCombustivel.carregaPrecos((DefaultTableModel) TabelaValores.getModel());
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -43,6 +44,8 @@ public class TelaAlterarValor extends javax.swing.JFrame {
         jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Alterar Valores");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("ALTERAR VALORES");
@@ -67,6 +70,7 @@ public class TelaAlterarValor extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TabelaValores);
 
+        BotaoAlterarValor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/update.png"))); // NOI18N
         BotaoAlterarValor.setText("Alterar");
         BotaoAlterarValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +78,7 @@ public class TelaAlterarValor extends javax.swing.JFrame {
             }
         });
 
+        BotaoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         BotaoMenu.setText("Voltar");
         BotaoMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,12 +111,12 @@ public class TelaAlterarValor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoAlterarValor)
                     .addComponent(BotaoMenu))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();

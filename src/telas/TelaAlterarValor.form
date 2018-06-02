@@ -10,6 +10,8 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Alterar Valores"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -57,13 +59,13 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="75" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="85" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BotaoAlterarValor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BotaoMenu" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="33" max="32767" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -113,6 +115,11 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
               </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -124,6 +131,9 @@
     </Container>
     <Component class="javax.swing.JButton" name="BotaoAlterarValor">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/imagens/update.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
       <Events>
@@ -132,6 +142,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="BotaoMenu">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/imagens/voltar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
       <Events>

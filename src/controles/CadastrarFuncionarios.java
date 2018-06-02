@@ -9,6 +9,7 @@ import objetos.Listas;
 
 
 public class CadastrarFuncionarios {
+    
    
     private static boolean existeLoginFuncionario(String login){
         boolean existe = false;
@@ -24,7 +25,8 @@ public class CadastrarFuncionarios {
         boolean ret = false;
         for(Funcionario f : Listas.equipe){
             if(f.getNome().equals(funcionario)){
-                ret = true;
+                 JOptionPane.showMessageDialog(null, "Funcionario ja está cadastrado");
+                //ret = true;
                 break;
             }
         }
@@ -38,19 +40,14 @@ public class CadastrarFuncionarios {
     }
     public static void cadastraFuncionario(JTextField campoNome, JTextField campoUsuario, JPasswordField campoSenha){
         if(campoVazio(campoNome)){
-            ControladorMensagem.exibeMensagem("O nome do funcionário não pode ser vazio. \nPor favor, informe novamente.");
             campoNome.requestFocus();
         }else if(campoVazio(campoUsuario)){
-            ControladorMensagem.exibeMensagem("O campo de usuário não pode ser vazio. \nPor favor, informe novamente.");
             campoUsuario.requestFocus();
         }else if(senhaVazia(campoSenha)){
-            ControladorMensagem.exibeMensagem("O campo de senha não pode ser vazio. \nPor favor, informe novamente.");
             campoSenha.requestFocus();
         }else if(existeNomeFuncionario(campoNome.getText().trim())){
-            ControladorMensagem.exibeMensagem("Já existe um funcionário com esse nome. \nPor favor, informe novamente.");
             campoNome.requestFocus();
         }else if(existeLoginFuncionario(campoUsuario.getText().trim())){
-            ControladorMensagem.exibeMensagem("Já existe um funcionário com esse login. \nPor favor, informe novamente.");
             campoUsuario.requestFocus();
         }else{
             JOptionPane.showMessageDialog(null, "Funcionario cadastrado!");

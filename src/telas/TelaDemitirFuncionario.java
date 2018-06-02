@@ -1,12 +1,15 @@
 
 package telas;
 
+import controles.CadastrarFuncionarios;
+
 
 public class TelaDemitirFuncionario extends javax.swing.JFrame {
 
     
     public TelaDemitirFuncionario() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     
@@ -15,22 +18,25 @@ public class TelaDemitirFuncionario extends javax.swing.JFrame {
     private void initComponents() {
 
         TituloNome = new javax.swing.JLabel();
-        CampoNome = new javax.swing.JTextField();
+        CampoDemitirNome = new javax.swing.JTextField();
         TituloLogin = new javax.swing.JLabel();
-        CampoLogin = new javax.swing.JTextField();
+        CampoDemitirLogin = new javax.swing.JTextField();
         TituloSenha = new javax.swing.JLabel();
-        CampoSenha = new javax.swing.JTextField();
+        CampoDemitirSenha = new javax.swing.JTextField();
         BotaoDemitir = new javax.swing.JButton();
         BotoaoVoltar = new javax.swing.JButton();
+        LabelDemitir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Demitir Funcionarios");
+        setResizable(false);
 
         TituloNome.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TituloNome.setText("Nome");
 
-        CampoNome.addActionListener(new java.awt.event.ActionListener() {
+        CampoDemitirNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoNomeActionPerformed(evt);
+                CampoDemitirNomeActionPerformed(evt);
             }
         });
 
@@ -40,14 +46,15 @@ public class TelaDemitirFuncionario extends javax.swing.JFrame {
         TituloSenha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         TituloSenha.setText("Senha");
 
-        CampoSenha.addActionListener(new java.awt.event.ActionListener() {
+        CampoDemitirSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoSenhaActionPerformed(evt);
+                CampoDemitirSenhaActionPerformed(evt);
             }
         });
 
         BotaoDemitir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        BotaoDemitir.setText("Demitir");
+        BotaoDemitir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/delete.png"))); // NOI18N
+        BotaoDemitir.setText(" Demitir");
         BotaoDemitir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoDemitirActionPerformed(evt);
@@ -55,7 +62,16 @@ public class TelaDemitirFuncionario extends javax.swing.JFrame {
         });
 
         BotoaoVoltar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        BotoaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/voltar.png"))); // NOI18N
         BotoaoVoltar.setText("Voltar");
+        BotoaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotoaoVoltarActionPerformed(evt);
+            }
+        });
+
+        LabelDemitir.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LabelDemitir.setText("Demitir Funcionarios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,6 +80,11 @@ public class TelaDemitirFuncionario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(BotaoDemitir)
+                        .addGap(57, 57, 57)
+                        .addComponent(BotoaoVoltar))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(TituloNome)
@@ -71,52 +92,66 @@ public class TelaDemitirFuncionario extends javax.swing.JFrame {
                             .addComponent(TituloSenha))
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CampoNome)
-                            .addComponent(CampoLogin)
-                            .addComponent(CampoSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(BotaoDemitir)
-                        .addGap(57, 57, 57)
-                        .addComponent(BotoaoVoltar)))
+                            .addComponent(CampoDemitirNome)
+                            .addComponent(CampoDemitirLogin)
+                            .addComponent(CampoDemitirSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))))
                 .addContainerGap(18, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LabelDemitir)
+                .addGap(82, 82, 82))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(4, 4, 4)
+                .addComponent(LabelDemitir, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TituloNome)
-                    .addComponent(CampoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CampoDemitirNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TituloLogin)
-                    .addComponent(CampoLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CampoDemitirLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TituloSenha)
-                    .addComponent(CampoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CampoDemitirSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoDemitir)
                     .addComponent(BotoaoVoltar))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoNomeActionPerformed
+    private void CampoDemitirNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoDemitirNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoNomeActionPerformed
+    }//GEN-LAST:event_CampoDemitirNomeActionPerformed
 
-    private void CampoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoSenhaActionPerformed
+    private void CampoDemitirSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoDemitirSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoSenhaActionPerformed
+    }//GEN-LAST:event_CampoDemitirSenhaActionPerformed
 
     private void BotaoDemitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoDemitirActionPerformed
-        // TODO add your handling code here:
+        
+        DemitirFuncionarios.demitirFuncionario(CampoDemitirNome, CampoDemitirLogin, CampoDemitirSenha);
+        
+        CampoDemitirLogin.setText("");
+        CampoDemitirNome.setText("");
+        CampoDemitirSenha.setText("");
+        
     }//GEN-LAST:event_BotaoDemitirActionPerformed
+
+    private void BotoaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoaoVoltarActionPerformed
+        this.dispose();
+        TelaGerente tela = new TelaGerente();
+        tela.setVisible(true);
+        
+    }//GEN-LAST:event_BotoaoVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,9 +191,10 @@ public class TelaDemitirFuncionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotaoDemitir;
     private javax.swing.JButton BotoaoVoltar;
-    private javax.swing.JTextField CampoLogin;
-    private javax.swing.JTextField CampoNome;
-    private javax.swing.JTextField CampoSenha;
+    private javax.swing.JTextField CampoDemitirLogin;
+    private javax.swing.JTextField CampoDemitirNome;
+    private javax.swing.JTextField CampoDemitirSenha;
+    private javax.swing.JLabel LabelDemitir;
     private javax.swing.JLabel TituloLogin;
     private javax.swing.JLabel TituloNome;
     private javax.swing.JLabel TituloSenha;
