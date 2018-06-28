@@ -138,7 +138,7 @@ public class TelaDemitirFuncionario extends javax.swing.JFrame {
 
     private void BotaoDemitirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoDemitirActionPerformed
         
-        DemitirFuncionarios.demitirFuncionario(CampoDemitirNome, CampoDemitirLogin, CampoDemitirSenha);
+        //DemitirFuncionarios.demitirFuncionario(CampoDemitirNome, CampoDemitirLogin, CampoDemitirSenha);
         
         CampoDemitirLogin.setText("");
         CampoDemitirNome.setText("");
