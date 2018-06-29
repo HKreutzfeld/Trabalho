@@ -1,5 +1,5 @@
 
-package telas;
+package view;
 
 
 public class TelaHistorico extends javax.swing.JFrame {

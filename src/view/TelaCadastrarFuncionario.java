@@ -1,5 +1,5 @@
 
-package telas;
+package view;
 
 import controles.CadastrarFuncionarios;
 

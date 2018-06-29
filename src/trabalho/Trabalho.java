@@ -5,8 +5,8 @@
  */
 package trabalho;
 
-import telas.TelaFuncionario;
-import telas.TelaLogin;
+import view.TelaFuncionario;
+import view.TelaLogin;
 
 /**
  *

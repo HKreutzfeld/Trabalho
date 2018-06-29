@@ -5,15 +5,15 @@
  */
 package main;
 
-import view.ClienteView;
+import view.TelaLogin;
 
 /**
  *
- * @author 104935
+ * @author Henrique Kretuzfeld Marcondes Cezar
  */
 public class Main {
     public static void main(String[] args) {
-        ClienteView cv = new ClienteView();
+        TelaLogin cv = new TelaLogin();
         cv.setVisible(true);
     }
 }

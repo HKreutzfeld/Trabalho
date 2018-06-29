@@ -1,5 +1,5 @@
 
-package telas;
+package view;
 
 
 public class TelaFuncionario extends javax.swing.JFrame {

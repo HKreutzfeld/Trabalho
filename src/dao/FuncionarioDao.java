@@ -1,6 +1,6 @@
 package dao;
 
-import bean.ClienteBean;
+import bean.FuncionarioBean;
 import connection.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,23 +9,24 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ClienteDao {
+public class FuncionarioDao {
     private Connection conexao; 
     
-    public ClienteDao(){
+    public FuncionarioDao(){
         ConnectionFactory cf = new ConnectionFactory();
         this.conexao = cf.obterConexao();
     }
-    public void cadastrarCliente(ClienteBean objeto){
-        String sql = "INSERT INTO clientes(idCliente, nomeCliente, nomeCombustivel, valor)VALUES(?,?,?,?)";
+    public void cadastrarFuncionario(FuncionarioBean objeto){
+        String sql = "INSERT INTO clientes(nomeFuncionario, "
+                + "lginFuncionario,senhaFuncionario)VALUES(?,?,?)";
         
         try {
             PreparedStatement pstmt = conexao.prepareStatement(sql);
             
-            pstmt.setInt(1,objeto.getIdCliente());
-            pstmt.setString(2,objeto.getNomeCliente());
-            pstmt.setString(3,objeto.getNomeCombustivel());
-            pstmt.setDouble(4,objeto.getValor());
+         
+            pstmt.setString(1,objeto.getNomeFuncionario());
+            pstmt.setString(2,objeto.getloginFuncionario());
+            pstmt.setString(3,objeto.getSenhaFuncionario());
             //Executar 
             pstmt.execute();
             //Fechar a conexão
@@ -34,15 +35,14 @@ public class ClienteDao {
             JOptionPane.showMessageDialog(null, "Falha! O erro foi: "+e.getMessage());
         }
     }
-    public DefaultTableModel listarClientes(){
+    public DefaultTableModel listarFuncionario(){
             DefaultTableModel modelo = new DefaultTableModel();
             
-            modelo.addColumn("ID");
             modelo.addColumn("Nome");
-            modelo.addColumn("Combustivel");
-            modelo.addColumn("Valor");
+            modelo.addColumn("Login");
+            modelo.addColumn("Senha");
             
-            String sql = "SELECT * FROM clientes";
+            String sql = "SELECT * FROM CadastrarFuncionarios";
             
             try {
                 Statement stmt = conexao.createStatement();
@@ -50,10 +50,9 @@ public class ClienteDao {
                 
                 while (rs.next()) {                    
                     modelo.addRow(new Object[]{
-                        rs.getInt("idCliente"),
-                        rs.getString("nomeCliente"),
-                        rs.getString("nomeCombustivel"),
-                        rs.getDouble("valor")
+                        rs.getString("nomeFuncionario"),
+                        rs.getString("loginFuncionario"),
+                        rs.getString("senhaFuncionario")
                     });
                 }
         } catch (Exception e) {
